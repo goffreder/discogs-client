@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Route } from 'react-router';
 
-import App from '../components/App';
-import { Main } from '../components/Main';
-import { Collection } from '../components/Collection';
-import { Wantlist } from '../components/Wantlist';
-import { About } from '../components/About';
+import App from './components/App';
+import { Main } from './components/Main';
+import { Collection } from './components/Collection';
+import { Wantlist } from './components/Wantlist';
+import { About } from './components/About';
 
 export default (
     <Route component={App}>

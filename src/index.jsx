@@ -6,9 +6,9 @@ import { Provider } from 'react-redux';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import reducer from './reducer';
+import reducer from './reducers';
 
-import routes from './config/routes';
+import routes from './routes';
 
 require('./styles/normalize.min.css');
 require('./styles/font.css');

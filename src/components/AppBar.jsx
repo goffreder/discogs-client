@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import MUIAppBar from 'material-ui/lib/app-bar';
 
-import * as actionCreators from '../action_creators';
+import * as actionCreators from '../actions';
 
 export class AppBar extends React.Component {
     constructor(props) {

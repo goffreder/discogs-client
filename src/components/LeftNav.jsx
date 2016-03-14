@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import MUILeftNav from 'material-ui/lib/left-nav';
 import { MenuItemContainer } from './MenuItem';
 
-import * as actionCreators from '../action_creators';
+import * as actionCreators from '../actions';
 
 export class LeftNav extends React.Component {
     constructor(props) {

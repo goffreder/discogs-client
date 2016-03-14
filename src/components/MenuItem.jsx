@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import MUIMenuItem from 'material-ui/lib/menus/menu-item';
 import MUIFontIcon from 'material-ui/lib/font-icon';
 
-import * as actionCreators from '../action_creators';
+import * as actionCreators from '../actions';
 
 export class MenuItem extends React.Component {
     constructor(props) {
