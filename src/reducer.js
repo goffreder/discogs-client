@@ -1,7 +1,6 @@
 import { Map } from 'immutable';
 
 function toggleNavState(state) {
-    console.log(state.toJS());
     return state.set('leftNavOpen', !state.get('leftNavOpen', false));
 }
 

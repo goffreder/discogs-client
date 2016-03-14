@@ -4,7 +4,7 @@ import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 import { connect } from 'react-redux';
 
 import MUILeftNav from 'material-ui/lib/left-nav';
-import MenuItem from './MenuItem';
+import { MenuItemContainer } from './MenuItem';
 
 export class LeftNav extends React.Component {
     constructor(props) {
@@ -19,10 +19,19 @@ export class LeftNav extends React.Component {
 
     render() {
         return (
-            <MUILeftNav docked={false} open={this.props.open} width={200}>
-                <MenuItem loading>{'Collection'}</MenuItem>
-                <MenuItem error>{'Wantlist'}</MenuItem>
-                <MenuItem>{'About'}</MenuItem>
+            <MUILeftNav docked={false} open={this.props.open} width={300}>
+                <MenuItemContainer linkTo="/" icon="home">
+                    {'Home'}
+                </MenuItemContainer>
+                <MenuItemContainer loading linkTo="/collection" icon="folder">
+                    {'Collection'}
+                </MenuItemContainer>
+                <MenuItemContainer icon="remove_red_eye" error linkTo="/wantlist">
+                    {'Wantlist'}
+                </MenuItemContainer>
+                <MenuItemContainer linkTo="/about" icon="info">
+                    {'About'}
+                </MenuItemContainer>
             </MUILeftNav>
         );
     }
