@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import MUILeftNav from 'material-ui/lib/left-nav';
 import { MenuItemContainer } from './MenuItem';
 
+import * as actionCreators from '../action_creators';
+
 export class LeftNav extends React.Component {
     constructor(props) {
         super(props);
@@ -14,12 +16,18 @@ export class LeftNav extends React.Component {
     }
 
     static propTypes = {
-        open: React.PropTypes.bool
+        open: React.PropTypes.bool,
+        toggleNav: React.PropTypes.func
     }
 
     render() {
         return (
-            <MUILeftNav docked={false} open={this.props.open} width={300}>
+            <MUILeftNav
+                docked={false}
+                open={this.props.open}
+                width={300}
+                onRequestChange={this.props.toggleNav}
+            >
                 <MenuItemContainer linkTo="/" icon="home">
                     {'Home'}
                 </MenuItemContainer>
@@ -47,5 +55,6 @@ function mapStateToProps(state) {
 }
 
 export const LeftNavContainer = connect(
-    mapStateToProps
+    mapStateToProps,
+    actionCreators
 )(LeftNav);
