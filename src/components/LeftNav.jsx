@@ -25,18 +25,18 @@ export class LeftNav extends React.Component {
             <MUILeftNav
                 docked={false}
                 open={this.props.open}
-                width={300}
+                width={200}
                 onRequestChange={this.props.toggleNav}
             >
                 <MenuItemContainer linkTo="/" icon="home">
                     {'Home'}
                 </MenuItemContainer>
-                <MenuItemContainer loading linkTo="/collection" icon="folder">
+                <MenuItemContainer linkTo="/collection" icon="folder">
                     {'Collection'}
                 </MenuItemContainer>
                 <MenuItemContainer
                     icon="remove_red_eye"
-                    error linkTo="/wantlist"
+                    linkTo="/wantlist"
                 >
                     {'Wantlist'}
                 </MenuItemContainer>
