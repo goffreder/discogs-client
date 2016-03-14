@@ -26,7 +26,10 @@ export class LeftNav extends React.Component {
                 <MenuItemContainer loading linkTo="/collection" icon="folder">
                     {'Collection'}
                 </MenuItemContainer>
-                <MenuItemContainer icon="remove_red_eye" error linkTo="/wantlist">
+                <MenuItemContainer
+                    icon="remove_red_eye"
+                    error linkTo="/wantlist"
+                >
                     {'Wantlist'}
                 </MenuItemContainer>
                 <MenuItemContainer linkTo="/about" icon="info">

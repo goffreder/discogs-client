@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import MUIMenuItem from 'material-ui/lib/menus/menu-item';
 import MUIFontIcon from 'material-ui/lib/font-icon';
+import MUICircularProgress from 'material-ui/lib/circular-progress';
 import * as MUIColors from 'material-ui/lib/styles/colors';
 
 import * as actionCreators from '../action_creators';
@@ -51,30 +52,38 @@ export class MenuItem extends React.Component {
             );
         } else {
             if (this.props.loading) {
+                const loaderStyle = {
+                    position: 'relative',
+                    bottom: 13,
+                    right: 13
+                };
+
                 rightIcon = (
-                    <MUIFontIcon className="material-icons">
-                        {'refresh'}
-                    </MUIFontIcon>
+                    <MUICircularProgress
+                        size={0.4}
+                        innerStyle={loaderStyle}
+                        color={MUIColors.grey600}
+                    />
                 );
             }
         }
 
-        return (
+        const menuItem = (
             <MUIMenuItem
                 onClick={this.props.error ? null : this.props.toggleNav}
                 leftIcon={leftIcon}
                 rightIcon={rightIcon}
                 disabled={this.props.error}
             >
-                {
-                    this.props.error
-                        ? this.props.children
-                        : <Link to={this.props.linkTo}>
-                            {this.props.children}
-                        </Link>
-                }
+                {this.props.children}
             </MUIMenuItem>
         );
+
+        return this.props.error
+            ? menuItem
+            : <Link to={this.props.linkTo}>
+                {menuItem}
+            </Link>;
     }
 }
 
