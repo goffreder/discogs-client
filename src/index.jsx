@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, hashHistory } from 'react-router';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { callApi } from './middleware/api';
 import { Provider } from 'react-redux';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -14,7 +15,7 @@ require('./styles/normalize.min.css');
 require('./styles/font.css');
 require('./styles/styles.css');
 
-const store = createStore(reducer);
+const store = createStore(reducer, undefined, applyMiddleware(callApi));
 
 injectTapEventPlugin();
 
