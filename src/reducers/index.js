@@ -5,6 +5,8 @@ function toggleNavState(state) {
 }
 
 export default (state = Map(), action) => {
+    console.log('reducer', state.toJS(), action);
+
     switch (action.type) {
         case 'TOGGLE_NAV_STATE':
             return toggleNavState(state);
