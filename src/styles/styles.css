@@ -2,3 +2,15 @@ a {
     color: inherit;
     text-decoration: inherit;
 }
+
+.loader {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+}

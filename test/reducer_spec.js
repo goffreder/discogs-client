@@ -36,4 +36,25 @@ describe('reducer', () => {
             leftNavOpen: false
         }));
     });
+
+    it('COLLECTION_REQUEST sets the loading property to true', () => {
+        const action = { type: 'COLLECTION_REQUEST' };
+        const nextState = reducer(undefined, action);
+
+        expect(nextState).to.equal(Map({
+            loading: true
+        }));
+    });
+
+    it('COLLECTION_SUCCESS sets the loading property to false', () => {
+        const initialState = Map({
+            loading: true
+        });
+        const action = { type: 'COLLECTION_SUCCESS' };
+        const nextState = reducer(initialState, action);
+
+        expect(nextState).to.equal(Map({
+            loading: false
+        }));
+    });
 });

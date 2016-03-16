@@ -24,18 +24,3 @@ function fetchCollection() {
 export function loadCollection() {
     return dispatch => dispatch(fetchCollection());
 }
-
-function testAction1() {
-    return { type: 'TEST_ACTION1' };
-}
-
-function testAction2() {
-    return { type: 'TEST_ACTION2' };
-}
-
-export function testAction() {
-    return dispatch => {
-        dispatch(testAction1());
-        dispatch(testAction2());
-    };
-}

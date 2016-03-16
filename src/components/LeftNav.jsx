@@ -48,11 +48,9 @@ export class LeftNav extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        open: state.get('leftNavOpen')
-    };
-}
+const mapStateToProps = state => {
+    return { open: state.get('leftNavOpen') };
+};
 
 export const LeftNavContainer = connect(
     mapStateToProps,
