@@ -24,6 +24,9 @@ module.exports = {
         }, {
             test: /\.css$/,
             loader: 'style!css!autoprefixer?browsers=last 2 versions'
+        }, {
+            test: /\.(png|eot|woff2|ttf|svg|woff)$/,
+            loader: 'url-loader'
         }]
     },
     resolve: {

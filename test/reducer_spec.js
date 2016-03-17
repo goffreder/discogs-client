@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 import { expect } from 'chai';
 
 import reducer from '../src/reducers';
@@ -50,11 +50,42 @@ describe('reducer', () => {
         const initialState = Map({
             loading: true
         });
-        const action = { type: 'COLLECTION_SUCCESS' };
+        const action = { type: 'COLLECTION_SUCCESS', releases: [] };
         const nextState = reducer(initialState, action);
 
         expect(nextState).to.equal(Map({
-            loading: false
+            loading: false,
+            collection: List()
+        }));
+    });
+
+    it('COLLECTION_SUCCESS sets the releases to the collection', () => {
+        const releases = [{
+            title: 'Lateralus',
+            artist: 'Tool',
+            year: 2001
+        }, {
+            title: 'Morningrise',
+            artist: 'Opeth',
+            year: 1996
+        }];
+        const action = { type: 'COLLECTION_SUCCESS', releases };
+        const nextState = reducer(undefined, action);
+
+        expect(nextState).to.equal(Map({
+            loading: false,
+            collection: List.of(
+                Map({
+                    title: 'Lateralus',
+                    artist: 'Tool',
+                    year: 2001
+                }),
+                Map({
+                    title: 'Morningrise',
+                    artist: 'Opeth',
+                    year: 1996
+                })
+            )
         }));
     });
 });
