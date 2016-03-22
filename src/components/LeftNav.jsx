@@ -4,6 +4,11 @@ import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 import { connect } from 'react-redux';
 
 import MUILeftNav from 'material-ui/lib/left-nav';
+import ActionHome from 'material-ui/lib/svg-icons/action/home';
+import ActionInfo from 'material-ui/lib/svg-icons/action/info';
+import FileFolder from 'material-ui/lib/svg-icons/file/folder';
+import ImageRemoveRedEye from 'material-ui/lib/svg-icons/image/remove-red-eye';
+
 import { MenuItemContainer } from './MenuItem';
 
 import * as actionCreators from '../actions';
@@ -28,19 +33,19 @@ export class LeftNav extends React.Component {
                 width={200}
                 onRequestChange={this.props.toggleNav}
             >
-                <MenuItemContainer linkTo="/" icon="home">
+                <MenuItemContainer linkTo="/" icon={<ActionHome />}>
                     {'Home'}
                 </MenuItemContainer>
-                <MenuItemContainer linkTo="/collection" icon="folder">
+                <MenuItemContainer linkTo="/collection" icon={<FileFolder />}>
                     {'Collection'}
                 </MenuItemContainer>
                 <MenuItemContainer
-                    icon="remove_red_eye"
+                    icon={<ImageRemoveRedEye />}
                     linkTo="/wantlist"
                 >
                     {'Wantlist'}
                 </MenuItemContainer>
-                <MenuItemContainer linkTo="/about" icon="info">
+                <MenuItemContainer linkTo="/about" icon={<ActionInfo />}>
                     {'About'}
                 </MenuItemContainer>
             </MUILeftNav>

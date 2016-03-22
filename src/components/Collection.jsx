@@ -1,15 +1,17 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import {shouldComponentUpdate} from 'react-addons-pure-render-mixin';
+import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 
 import Table from 'material-ui/lib/table/table';
+import TableRow from 'material-ui/lib/table/table-row';
+import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableHeader from 'material-ui/lib/table/table-header';
+import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Divider from 'material-ui/lib/divider';
 
-import { CollectionHeader } from './CollectionHeader';
-import { CollectionRelease } from './CollectionRelease';
+import { CollectionHeaderContainer } from './CollectionHeader';
 
 import { getCollection } from '../selectors';
 
@@ -38,23 +40,40 @@ export class Collection extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadCollection();
+        if (!this.props.collection.length) {
+            this.props.loadCollection();
+        }
     }
 
     render() {
         const collection = this.props.collection.map((r, k) => {
-            return <CollectionRelease key={k} {...r} />;
+            return (
+                <TableRow key={k}>
+                    <TableRowColumn>{r.id}</TableRowColumn>
+                    <TableRowColumn>{r.title}</TableRowColumn>
+                    <TableRowColumn>{r.artist}</TableRowColumn>
+                    <TableRowColumn>{r.year}</TableRowColumn>
+                </TableRow>
+            );
         });
 
         return (
             <div className="collection">
-                <h1>{'Collection'}</h1>
+                <CollectionHeaderContainer />
                 <Divider />
-                <Table height="600">
-                    <TableHeader >
-                        <CollectionHeader />
+                <Table height="600" selectable={false}>
+                    <TableHeader
+                        adjustForCheckbox={false}
+                        displaySelectAll={false}
+                    >
+                        <TableRow>
+                            <TableHeaderColumn>{'ID'}</TableHeaderColumn>
+                            <TableHeaderColumn>{'Title'}</TableHeaderColumn>
+                            <TableHeaderColumn>{'Artist'}</TableHeaderColumn>
+                            <TableHeaderColumn>{'Year'}</TableHeaderColumn>
+                        </TableRow>
                     </TableHeader>
-                    <TableBody>
+                    <TableBody displayRowCheckbox={false}>
                         {collection}
                     </TableBody>
                 </Table>

@@ -4,7 +4,6 @@ import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 import { connect } from 'react-redux';
 
 import MUIMenuItem from 'material-ui/lib/menus/menu-item';
-import MUIFontIcon from 'material-ui/lib/font-icon';
 
 import * as actionCreators from '../actions';
 
@@ -16,21 +15,18 @@ export class MenuItem extends React.Component {
     }
 
     static propTypes = {
-        icon: React.PropTypes.string,
+        icon: React.PropTypes.element,
         children: React.PropTypes.node,
         linkTo: React.PropTypes.string,
         toggleNav: React.PropTypes.func
     }
 
     render() {
-        const leftIcon = this.props.icon
-            ? <MUIFontIcon className="material-icons">
-                {this.props.icon}
-            </MUIFontIcon>
-            : null;
-
         const menuItem = (
-            <MUIMenuItem onClick={this.props.toggleNav} leftIcon={leftIcon}>
+            <MUIMenuItem
+                onClick={this.props.toggleNav}
+                leftIcon={this.props.icon}
+            >
                 {this.props.children}
             </MUIMenuItem>
         );
