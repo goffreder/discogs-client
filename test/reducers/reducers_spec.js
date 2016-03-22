@@ -1,7 +1,7 @@
 import { Map, List } from 'immutable';
 import { expect } from 'chai';
 
-import reducer from '../src/reducers';
+import reducer from '../../src/reducers';
 
 describe('reducer', () => {
     it('TOGGLE_NAV_STATE the first time opens the left nav', () => {

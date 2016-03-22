@@ -1,12 +1,9 @@
 import React from 'react';
 import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
-import { connect } from 'react-redux';
 
 import MUIAppBar from 'material-ui/lib/app-bar';
 
-import * as actionCreators from '../actions';
-
-export class AppBar extends React.Component {
+export default class AppBar extends React.Component {
     constructor(props) {
         super(props);
 
@@ -30,10 +27,3 @@ export class AppBar extends React.Component {
         );
     }
 }
-
-function mapStateToProps() { return {}; }
-
-export const AppBarContainer = connect(
-    mapStateToProps,
-    actionCreators
-)(AppBar);

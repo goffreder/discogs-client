@@ -1,15 +1,12 @@
 import React from 'react';
 
 import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
-import { connect } from 'react-redux';
 
 import RaisedButton from 'material-ui/lib/raised-button';
 import NavigationRefresh from 'material-ui/lib/svg-icons/navigation/refresh';
 import { red500 } from 'material-ui/lib/styles/colors';
 
-import * as actionCreators from '../actions';
-
-export class CollectionHeader extends React.Component {
+export default class CollectionHeader extends React.Component {
     constructor(props) {
         super(props);
 
@@ -37,8 +34,3 @@ export class CollectionHeader extends React.Component {
         );
     }
 }
-
-export const CollectionHeaderContainer = connect(
-    () => { return {}; },
-    actionCreators
-)(CollectionHeader);

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 
-export class Main extends React.Component {
+export default class Main extends React.Component {
     constructor(props) {
         super(props);
 

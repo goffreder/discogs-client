@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
-import { connect } from 'react-redux';
 
 import MUILeftNav from 'material-ui/lib/left-nav';
 import ActionHome from 'material-ui/lib/svg-icons/action/home';
@@ -9,11 +8,9 @@ import ActionInfo from 'material-ui/lib/svg-icons/action/info';
 import FileFolder from 'material-ui/lib/svg-icons/file/folder';
 import ImageRemoveRedEye from 'material-ui/lib/svg-icons/image/remove-red-eye';
 
-import { MenuItemContainer } from './MenuItem';
+import MenuItem from '../containers/MenuItem';
 
-import * as actionCreators from '../actions';
-
-export class LeftNav extends React.Component {
+export default class LeftNav extends React.Component {
     constructor(props) {
         super(props);
 
@@ -33,31 +30,22 @@ export class LeftNav extends React.Component {
                 width={200}
                 onRequestChange={this.props.toggleNav}
             >
-                <MenuItemContainer linkTo="/" icon={<ActionHome />}>
+                <MenuItem linkTo="/" icon={<ActionHome />}>
                     {'Home'}
-                </MenuItemContainer>
-                <MenuItemContainer linkTo="/collection" icon={<FileFolder />}>
+                </MenuItem>
+                <MenuItem linkTo="/collection" icon={<FileFolder />}>
                     {'Collection'}
-                </MenuItemContainer>
-                <MenuItemContainer
+                </MenuItem>
+                <MenuItem
                     icon={<ImageRemoveRedEye />}
                     linkTo="/wantlist"
                 >
                     {'Wantlist'}
-                </MenuItemContainer>
-                <MenuItemContainer linkTo="/about" icon={<ActionInfo />}>
+                </MenuItem>
+                <MenuItem linkTo="/about" icon={<ActionInfo />}>
                     {'About'}
-                </MenuItemContainer>
+                </MenuItem>
             </MUILeftNav>
         );
     }
 }
-
-const mapStateToProps = state => {
-    return { open: state.get('leftNavOpen') };
-};
-
-export const LeftNavContainer = connect(
-    mapStateToProps,
-    actionCreators
-)(LeftNav);

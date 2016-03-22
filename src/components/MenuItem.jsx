@@ -7,7 +7,7 @@ import MUIMenuItem from 'material-ui/lib/menus/menu-item';
 
 import * as actionCreators from '../actions';
 
-export class MenuItem extends React.Component {
+export default class MenuItem extends React.Component {
     constructor(props) {
         super(props);
 

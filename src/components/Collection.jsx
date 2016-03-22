@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 
@@ -11,13 +10,9 @@ import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Divider from 'material-ui/lib/divider';
 
-import { CollectionHeaderContainer } from './CollectionHeader';
+import CollectionHeader from '../containers/CollectionHeader';
 
-import { getCollection } from '../selectors';
-
-import * as actionCreators from '../actions';
-
-export class Collection extends React.Component {
+export default class Collection extends React.Component {
     constructor(props) {
         super(props);
 
@@ -59,7 +54,7 @@ export class Collection extends React.Component {
 
         return (
             <div className="collection">
-                <CollectionHeaderContainer />
+                <CollectionHeader />
                 <Divider />
                 <Table height="600" selectable={false}>
                     <TableHeader
@@ -81,14 +76,3 @@ export class Collection extends React.Component {
         );
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        collection: getCollection(state)
-    };
-};
-
-export const CollectionContainer = connect(
-    mapStateToProps,
-    actionCreators
-)(Collection);

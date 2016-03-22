@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
+import AppBar from '../containers/AppBar';
+import LeftNav from '../containers/LeftNav';
+import Loader from '../containers/Loader';
 
-import { AppBarContainer } from './AppBar';
-import { LeftNavContainer } from './LeftNav';
-import { Loader } from './Loader';
-
-export class App extends React.Component {
+export default class App extends React.Component {
     static propTypes = {
         children: React.PropTypes.node,
         loading: React.PropTypes.bool
@@ -17,17 +15,11 @@ export class App extends React.Component {
 
         return (
             <div>
-                <AppBarContainer />
-                <LeftNavContainer />
+                <AppBar />
+                <LeftNav />
                 {this.props.children}
                 {loader}
             </div>
         );
     }
 }
-
-const mapStateToProps = state => {
-    return { loading: state.get('loading') };
-};
-
-export const AppContainer = connect(mapStateToProps)(App);
