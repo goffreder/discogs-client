@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import reducer from '../../src/reducers';
 
-describe('reducer', () => {
+describe('reducers', () => {
     it('TOGGLE_NAV_STATE the first time opens the left nav', () => {
         const action = { type: 'TOGGLE_NAV_STATE' };
         const nextState = reducer(undefined, action);
