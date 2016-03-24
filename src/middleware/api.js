@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_ROOT = 'https://api.discogs.com/';
+import { ROOT } from '../constants/api';
 
 const createActionFromAPIResponse = (type, response) => {
     let action = { type };
@@ -22,7 +22,7 @@ export const callApi = () => next => action => {
     }
 
     let { endpoint, types } = callAPI;
-    let URL = (endpoint.indexOf(API_ROOT) === -1 ? API_ROOT : '') + endpoint;
+    let URL = (endpoint.indexOf(ROOT) === -1 ? ROOT : '') + endpoint;
 
     const [ requestType, successType, failureType ] = types;
 

@@ -1,1 +1,2 @@
-export * from './constants';
+export * as constants from './constants';
+export * as actions from './actions';
