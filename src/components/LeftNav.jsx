@@ -4,7 +4,6 @@ import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 
 import MUILeftNav from 'material-ui/lib/left-nav';
 import ActionHome from 'material-ui/lib/svg-icons/action/home';
-import ActionInfo from 'material-ui/lib/svg-icons/action/info';
 import FileFolder from 'material-ui/lib/svg-icons/file/folder';
 import ImageRemoveRedEye from 'material-ui/lib/svg-icons/image/remove-red-eye';
 
@@ -41,9 +40,6 @@ export default class LeftNav extends React.Component {
                     linkTo="/wantlist"
                 >
                     {'Wantlist'}
-                </MenuItem>
-                <MenuItem linkTo="/about" icon={<ActionInfo />}>
-                    {'About'}
                 </MenuItem>
             </MUILeftNav>
         );

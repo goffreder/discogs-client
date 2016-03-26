@@ -5,7 +5,7 @@ import { expect } from 'chai';
 
 import App from '../../src/components/App';
 
-describe('App', () => {
+export default () => {
     const renderer = createRenderer();
 
     it('renders correctly with no props and no children', () => {
@@ -39,4 +39,4 @@ describe('App', () => {
         expect(component.props.children[3].type.displayName)
             .to.equal('Connect(Loader)');
     });
-});
+};

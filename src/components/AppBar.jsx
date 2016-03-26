@@ -11,18 +11,14 @@ export default class AppBar extends React.Component {
     }
 
     static propTypes = {
-        toggleNav: React.PropTypes.func
-    }
-
-    _handleLeftIconButtonTouchTap = () => {
-        this.props.toggleNav();
+        toggleNav: React.PropTypes.func.isRequired
     }
 
     render() {
         return (
             <MUIAppBar
                 title="Discogs Client"
-                onLeftIconButtonTouchTap={this._handleLeftIconButtonTouchTap}
+                onLeftIconButtonTouchTap={this.props.toggleNav}
             />
         );
     }
