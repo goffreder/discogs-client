@@ -14,11 +14,7 @@ export default class CollectionHeader extends React.Component {
     }
 
     static propTypes = {
-        loadCollection: React.PropTypes.func
-    }
-
-    _handleClick = () => {
-        this.props.loadCollection();
+        loadCollection: React.PropTypes.func.isRequired
     }
 
     render() {
@@ -28,7 +24,7 @@ export default class CollectionHeader extends React.Component {
                 <RaisedButton
                     label="Reload"
                     icon={<NavigationRefresh color={red500} />}
-                    onClick={this._handleClick}
+                    onClick={this.props.loadCollection}
                 />
             </div>
         );
