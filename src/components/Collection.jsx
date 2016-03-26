@@ -52,26 +52,30 @@ export default class Collection extends React.Component {
             );
         });
 
+        const content = collection.length
+            ? (<Table height="600" selectable={false}>
+                <TableHeader
+                    adjustForCheckbox={false}
+                    displaySelectAll={false}
+                >
+                    <TableRow>
+                        <TableHeaderColumn>{'ID'}</TableHeaderColumn>
+                        <TableHeaderColumn>{'Title'}</TableHeaderColumn>
+                        <TableHeaderColumn>{'Artist'}</TableHeaderColumn>
+                        <TableHeaderColumn>{'Year'}</TableHeaderColumn>
+                    </TableRow>
+                </TableHeader>
+                <TableBody displayRowCheckbox={false}>
+                    {collection}
+                </TableBody>
+            </Table>)
+            : <h1 className="empty-collection">{'No items to display'}</h1>;
+
         return (
             <div className="collection">
                 <CollectionHeader />
                 <Divider />
-                <Table height="600" selectable={false}>
-                    <TableHeader
-                        adjustForCheckbox={false}
-                        displaySelectAll={false}
-                    >
-                        <TableRow>
-                            <TableHeaderColumn>{'ID'}</TableHeaderColumn>
-                            <TableHeaderColumn>{'Title'}</TableHeaderColumn>
-                            <TableHeaderColumn>{'Artist'}</TableHeaderColumn>
-                            <TableHeaderColumn>{'Year'}</TableHeaderColumn>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody displayRowCheckbox={false}>
-                        {collection}
-                    </TableBody>
-                </Table>
+                {content}
             </div>
         );
     }

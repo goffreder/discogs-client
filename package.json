@@ -28,6 +28,7 @@
     "eslint-plugin-objects": "^1.1.1",
     "eslint-plugin-react": "^4.2.3",
     "file-loader": "^0.8.5",
+    "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "nock": "^7.7.2",
     "npm-check": "^4.1.4",

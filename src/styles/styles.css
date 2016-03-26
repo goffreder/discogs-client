@@ -83,3 +83,8 @@ a {
     justify-content: space-between;
     align-items: baseline;
 }
+
+h1.empty-collection {
+    text-align: center;
+    margin-top: 50px;
+}
