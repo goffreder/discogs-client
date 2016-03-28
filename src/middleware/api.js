@@ -2,15 +2,23 @@ import axios from 'axios';
 
 import { ROOT } from '../constants/api';
 
-const createActionFromAPIResponse = (type, response) => {
+const createActionFromAPISuccess = (type, response) => {
     let action = { type };
 
-    if (response.status !== 200) {
-        action.error = response.data;
+    Object.keys(response.data).forEach(f => {
+        action[f] = response.data[f];
+    });
+
+    return action;
+};
+
+const createActionFromAPIFailure = (type, error) => {
+    let action = { type };
+
+    if (error.status) {
+        action.error = error.data;
     } else {
-        Object.keys(response.data).forEach(f => {
-            action[f] = response.data[f];
-        });
+        action.error = { message: error.toString() };
     }
 
     return action;
@@ -33,9 +41,9 @@ export const callApi = () => next => action => {
     next({ type: requestType });
 
     return axios.get(URL)
-        .then(response => next(createActionFromAPIResponse(
+        .then(response => next(createActionFromAPISuccess(
             successType,
             response
         )))
-        .catch(error => next(createActionFromAPIResponse(failureType, error)));
+        .catch(error => next(createActionFromAPIFailure(failureType, error)));
 };
