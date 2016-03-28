@@ -35,7 +35,6 @@ export default class ReleaseDialog extends React.Component {
 
         return (
             <Dialog
-                title="Dialog With Actions"
                 actions={actions}
                 modal={false}
                 open={this.props.open}

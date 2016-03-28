@@ -14,8 +14,6 @@
 ## TEST
 * ReleaseDialog
 * ReleaseCard
-* ErrorDialog
-* App with error dialog
 
 ## OTHER
 * inserire uso localstorage?

@@ -119,9 +119,9 @@ export default () => {
             </Provider>
         );
 
-        const td = scryRenderedDOMComponentsWithTag(component, 'td');
+        const tds = scryRenderedDOMComponentsWithTag(component, 'td');
 
-        Simulate.click(td[0]);
+        Simulate.click(tds[0]);
 
         expect(called).to.be.true;
     });

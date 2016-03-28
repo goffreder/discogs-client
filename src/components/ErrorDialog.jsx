@@ -18,6 +18,10 @@ export default class ErrorDialog extends React.Component {
         closeError: React.PropTypes.func.isRequired
     }
 
+    static defaultProps = {
+        open: true
+    }
+
     render() {
         const actions = [
             <FlatButton
@@ -27,6 +31,13 @@ export default class ErrorDialog extends React.Component {
                 onTouchTap={this.props.closeError}
             />
         ];
+
+        const message = this.props.message
+            ? <div style={{ marginTop: 20 }}>
+                <b>{'Error message: '}</b>
+                {this.props.message}
+            </div>
+            : null;
 
         return (
             <Dialog
@@ -41,10 +52,7 @@ export default class ErrorDialog extends React.Component {
                 }}
             >
                 {'Oops! Somewhere, something went wrong!'}
-                <div style={{ marginTop: 20 }}>
-                    <b>{'Error message: '}</b>
-                    {this.props.message}
-                </div>
+                {message}
             </Dialog>
         );
     }
