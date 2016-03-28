@@ -7,6 +7,17 @@ export function toggleNav() {
     return { type: actions.TOGGLE_NAV_STATE };
 }
 
+export function openRelease(releaseId) {
+    return {
+        type: actions.OPEN_RELEASE,
+        releaseId
+    };
+}
+
+export function closeRelease() {
+    return { type: actions.CLOSE_RELEASE };
+}
+
 function fetchCollection() {
     return {
         [CALL_API]: {

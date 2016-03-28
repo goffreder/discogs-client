@@ -37,6 +37,28 @@ describe('reducers', () => {
         }));
     });
 
+    it('OPEN_RELEASE sets the current release property', () => {
+        const action = {
+            type: 'OPEN_RELEASE',
+            releaseId: 1
+        };
+        const nextState = reducer(undefined, action);
+
+        expect(nextState).to.equal(Map({
+            currentRelease: 1
+        }));
+    });
+
+    it('CLOSE_RELEASE unsets the current release property', () => {
+        const initialState = Map({
+            currentRelease: 1
+        });
+        const action = { type: 'CLOSE_RELEASE' };
+        const nextState = reducer(initialState, action);
+
+        expect(nextState).to.equal(Map());
+    });
+
     it('COLLECTION_REQUEST sets the loading property to true', () => {
         const action = { type: 'COLLECTION_REQUEST' };
         const nextState = reducer(undefined, action);

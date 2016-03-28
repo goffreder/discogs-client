@@ -26,3 +26,10 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('app')
 );
+
+// import ReleaseCard from './components/ReleaseCard';
+//
+// ReactDOM.render(
+//     <ReleaseCard />,
+//     document.getElementById('app')
+// );

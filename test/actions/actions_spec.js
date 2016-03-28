@@ -18,44 +18,65 @@ describe('actions', () => {
 
         expect(actions.toggleNav()).to.deep.equal(expectedAction);
     });
+
+    it('should create an action to open a release', () => {
+        const expectedAction = {
+            type: types.OPEN_RELEASE,
+            releaseId: 1
+        };
+
+        expect(actions.openRelease(1)).to.deep.equal(expectedAction);
+    });
+
+    it('should create an action to close a release', () => {
+        const expectedAction = { type: types.CLOSE_RELEASE };
+
+        expect(actions.closeRelease()).to.deep.equal(expectedAction);
+    });
 });
 
 describe('async actions', () => {
-    it('it creates COLLECTION_SUCCESS when fetching collection has been done', () => {
-        afterEach(() => nock.cleanAll());
+    it(
+        'it creates COLLECTION_SUCCESS when fetching collection has been done',
+        () => {
+            afterEach(() => nock.cleanAll());
 
-        nock(ROOT)
-            .get(COLLECTION_ENDPOINT)
-            .reply(200, { foo: 'bar' });
+            nock(ROOT)
+                .get(COLLECTION_ENDPOINT)
+                .reply(200, { foo: 'bar' });
 
-        const expectedActions = [
-            { type: types.COLLECTION_REQUEST },
-            { type: types.COLLECTION_SUCCESS, foo: 'bar' }
-        ];
-        const store = mockStore(undefined);
+            const expectedActions = [
+                { type: types.COLLECTION_REQUEST },
+                { type: types.COLLECTION_SUCCESS, foo: 'bar' }
+            ];
+            const store = mockStore(undefined);
 
-        return store.dispatch(actions.loadCollection())
-            .then(() =>
-                expect(store.getActions()).to.deep.equal(expectedActions)
-            );
-    });
+            return store.dispatch(actions.loadCollection())
+                .then(() =>
+                    expect(store.getActions()).to.deep.equal(expectedActions)
+                );
+        }
+    );
 
-    it('it creates COLLECTION_FAILURE when fetching collection has failed', () => {
-        afterEach(() => nock.cleanAll());
+    it(
+        'it creates COLLECTION_FAILURE when fetching collection has failed',
+        () => {
+            afterEach(() => nock.cleanAll());
 
-        nock(ROOT)
-            .get(COLLECTION_ENDPOINT)
-            .reply(400);
+            nock(ROOT)
+                .get(COLLECTION_ENDPOINT)
+                .reply(400);
 
-        const expectedActions = [
-            { type: types.COLLECTION_REQUEST },
-            { type: types.COLLECTION_FAILURE }
-        ];
-        const store = mockStore(undefined);
+            const expectedActions = [
+                { type: types.COLLECTION_REQUEST },
+                { type: types.COLLECTION_FAILURE }
+            ];
+            const store = mockStore(undefined);
 
-        return store.dispatch(actions.loadCollection())
-            .then(() =>
-                expect(store.getActions()).to.deep.equal(expectedActions)
-            );
-    });
+            return store.dispatch(actions.loadCollection())
+                .then(() =>
+                    expect(store.getActions()).to.deep.equal(expectedActions)
+                );
+        }
+    );
 });

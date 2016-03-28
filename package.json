@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "axios": "^0.9.1",
+    "griddle-react": "^0.4.1",
     "immutable": "^3.7.6",
     "material-ui": "^0.15.0-alpha.1",
     "react": "^0.14.7",

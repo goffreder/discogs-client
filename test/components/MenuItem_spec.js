@@ -12,21 +12,30 @@ export default () => {
         renderer.render(<MenuItem>{'Test item'}</MenuItem>);
 
         const component = renderer.getRenderOutput();
-        const innerItem = component.props.children;
 
-        expect(component.type.displayName).to.equal('Link');
-        expect(innerItem.type.displayName)
-            .to.equal('MenuItem');
-        expect(innerItem.props.children).to.equal('Test item');
+        expect(component.type.displayName).to.equal('MenuItem');
+        expect(component.props.children).to.equal('Test item');
     });
 
     it('renders correctly with an icon', () => {
-        renderer.render(<MenuItem icon={'icon'}>{'Test item'}</MenuItem>);
+        renderer.render(<MenuItem icon={<div />}>{'Test item'}</MenuItem>);
+
+        const component = renderer.getRenderOutput();
+
+        expect(component.props.leftIcon.type).to.equal('div');
+    });
+
+    it('renders correctly with a linkTo property', () => {
+        renderer.render(<MenuItem linkTo="test">{'Test item'}</MenuItem>);
 
         const component = renderer.getRenderOutput();
         const innerItem = component.props.children;
 
-        expect(innerItem.props.leftIcon).to.equal('icon');
+        expect(component.type.displayName).to.equal('Link');
+        expect(component.props.to).to.equal('test');
+        expect(innerItem.type.displayName)
+            .to.equal('MenuItem');
+        expect(innerItem.props.children).to.equal('Test item');
     });
 
     it('invokes callback when item is clicked', () => {
@@ -37,9 +46,8 @@ export default () => {
         );
 
         const component = renderer.getRenderOutput();
-        const innerItem = component.props.children;
 
-        innerItem.props.onClick();
+        component.props.onClick();
 
         expect(called).to.be.true;
     });

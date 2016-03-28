@@ -3,7 +3,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import {
     createRenderer,
-    renderIntoDocument
+    Simulate,
+    renderIntoDocument,
+    scryRenderedDOMComponentsWithTag
 } from 'react-addons-test-utils';
 
 import { expect } from 'chai';
@@ -16,7 +18,12 @@ export default () => {
     it('renders correctly with empty collection', () => {
         const callback = () => {};
 
-        renderer.render(<Collection loadCollection={callback} />);
+        renderer.render(
+            <Collection
+                loadCollection={callback}
+                openRelease={callback}
+            />
+        );
 
         const component = renderer.getRenderOutput();
 
@@ -45,19 +52,14 @@ export default () => {
         renderer.render(<Collection
             collection={collection}
             loadCollection={callback}
+            openRelease={callback}
         />);
 
         const component = renderer.getRenderOutput();
         const table = component.props.children[2];
-        const tbody = table.props.children[1];
-        const trow = tbody.props.children[0];
 
-        expect(table.type.displayName).to.equal('Table');
-        expect(tbody.props.children.length).to.equal(1);
-        expect(trow.props.children[0].props.children).to.equal(1);
-        expect(trow.props.children[1].props.children).to.equal('Lateralus');
-        expect(trow.props.children[2].props.children).to.equal('Tool');
-        expect(trow.props.children[3].props.children).to.equal(1996);
+        expect(table.type.displayName).to.equal('Griddle');
+        expect(table.props.results).to.deep.equal(collection);
     });
 
     it('invokes callback con componentDidMount', () => {
@@ -68,9 +70,39 @@ export default () => {
 
         renderIntoDocument(
             <Provider store={store}>
-                <Collection loadCollection={callback} />
+                <Collection loadCollection={callback} openRelease={callback} />
             </Provider>
         );
+
+        expect(called).to.be.true;
+    });
+
+    it('invokes callback on row click', () => {
+        const store = createStore(() => {});
+
+        let called = false;
+        const callback = () => { called = true; };
+        const emptyCallback = () => {};
+        const collection = [{
+            id: 1,
+            title: 'Lateralus',
+            artist: 'Tool',
+            year: 1996
+        }];
+
+        const component = renderIntoDocument(
+            <Provider store={store}>
+                <Collection
+                    collection={collection}
+                    loadCollection={emptyCallback}
+                    openRelease={callback}
+                />
+            </Provider>
+        );
+
+        const td = scryRenderedDOMComponentsWithTag(component, 'td');
+
+        Simulate.click(td[0]);
 
         expect(called).to.be.true;
     });

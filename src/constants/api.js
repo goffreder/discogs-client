@@ -1,4 +1,6 @@
 export const ROOT = 'https://api.discogs.com';
 
-export const COLLECTION_ENDPOINT = '/users/goffreder/collection/folders/0/releases';
-export const WANTLIST_ENDPOINT = '';
+const base = '/users/goffreder';
+
+export const COLLECTION_ENDPOINT = base + '/collection/folders/0/releases';
+export const WANTLIST_ENDPOINT = base + '/wants';

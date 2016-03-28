@@ -2,7 +2,10 @@ import { connect } from 'react-redux';
 import App from '../components/App';
 
 const mapStateToProps = state => {
-    return { loading: state.get('loading') };
+    return {
+        loading: state.get('loading'),
+        currentRelease: state.get('currentRelease')
+    };
 };
 
 const mapDispatchToProps = () => { return {}; };

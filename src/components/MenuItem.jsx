@@ -19,15 +19,17 @@ export default class MenuItem extends React.Component {
     }
 
     render() {
-        return (
-            <Link to={this.props.linkTo}>
-                <MUIMenuItem
-                    onClick={this.props.toggleNav}
-                    leftIcon={this.props.icon}
-                >
-                    {this.props.children}
-                </MUIMenuItem>
-            </Link>
+        const innerItem = (
+            <MUIMenuItem
+                onClick={this.props.toggleNav}
+                leftIcon={this.props.icon}
+            >
+                {this.props.children}
+            </MUIMenuItem>
         );
+
+        return this.props.linkTo
+            ? <Link to={this.props.linkTo}>{innerItem}</Link>
+            : innerItem;
     }
 }
