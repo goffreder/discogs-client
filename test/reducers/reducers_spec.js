@@ -59,6 +59,16 @@ describe('reducers', () => {
         expect(nextState).to.equal(Map());
     });
 
+    it('CLOSE_ERROR unsets the error property', () => {
+        const initialState = Map({
+            error: Map()
+        });
+        const action = { type: 'CLOSE_ERROR' };
+        const nextState = reducer(initialState, action);
+
+        expect(nextState).to.equal(Map());
+    });
+
     it('COLLECTION_REQUEST sets the loading property to true', () => {
         const action = { type: 'COLLECTION_REQUEST' };
         const nextState = reducer(undefined, action);
@@ -108,6 +118,22 @@ describe('reducers', () => {
                     year: 1996
                 })
             )
+        }));
+    });
+
+    it('COLLECTION_FAILURE sets the error and unsets the loader', () => {
+        const initialState = Map({ loading: true });
+        const action = {
+            type: 'COLLECTION_FAILURE',
+            error: { message: 'Error' }
+        };
+        const nextState = reducer(initialState, action);
+
+        expect(nextState).to.equal(Map({
+            loading: false,
+            error: Map({
+                message: 'Error'
+            })
         }));
     });
 });

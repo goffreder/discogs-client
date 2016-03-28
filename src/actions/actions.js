@@ -18,6 +18,10 @@ export function closeRelease() {
     return { type: actions.CLOSE_RELEASE };
 }
 
+export function closeError() {
+    return { type: actions.CLOSE_ERROR };
+}
+
 function fetchCollection() {
     return {
         [CALL_API]: {

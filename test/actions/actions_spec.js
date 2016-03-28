@@ -33,6 +33,12 @@ describe('actions', () => {
 
         expect(actions.closeRelease()).to.deep.equal(expectedAction);
     });
+
+    it('should create an action to close the error dialog', () => {
+        const expectedAction = { type: types.CLOSE_ERROR };
+
+        expect(actions.closeError()).to.deep.equal(expectedAction);
+    });
 });
 
 describe('async actions', () => {

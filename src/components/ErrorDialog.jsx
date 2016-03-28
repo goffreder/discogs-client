@@ -5,7 +5,7 @@ import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 
-export default class ReleaseDialog extends React.Component {
+export default class ErrorDialog extends React.Component {
     constructor(props) {
         super(props);
 
@@ -14,34 +14,29 @@ export default class ReleaseDialog extends React.Component {
 
     static propTypes = {
         open: React.PropTypes.bool.isRequired,
-        releaseId: React.PropTypes.number,
-        closeRelease: React.PropTypes.func.isRequired
+        closeError: React.PropTypes.func.isRequired
     }
 
     render() {
         const actions = [
             <FlatButton
-                key={1}
-                label="Go to release"
-                primary
-                onTouchTap={this.props.closeRelease}
-            />, <FlatButton
                 key={0}
-                label="Cancel"
+                label="Close"
                 secondary
-                onTouchTap={this.props.closeRelease}
+                onTouchTap={this.props.closeError}
             />
         ];
 
         return (
             <Dialog
-                title="Dialog With Actions"
+                title="Error"
+                className="error"
                 actions={actions}
                 modal={false}
                 open={this.props.open}
-                onRequestClose={this.props.closeRelease}
+                onRequestClose={this.props.closeError}
             >
-                {'Watching '}{this.props.releaseId}{' details.'}
+                {'Oops! Somewhere, something went wrong!'}
             </Dialog>
         );
     }

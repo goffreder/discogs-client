@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 
 import MUIAppBar from 'material-ui/lib/app-bar';

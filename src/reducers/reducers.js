@@ -1,5 +1,7 @@
 import { Map, fromJS } from 'immutable';
 
+import * as actions from '../constants/actions';
+
 function toggleNavState(state) {
     return state.set('leftNavOpen', !state.get('leftNavOpen', false));
 }
@@ -20,21 +22,36 @@ function closeRelease(state) {
     return state.delete('currentRelease');
 }
 
+function setError(state, error) {
+    return state.set('error', fromJS(error));
+}
+
+function closeError(state) {
+    return state.delete('error');
+}
+
 export default (state = Map(), action) => {
     switch (action.type) {
-        case 'TOGGLE_NAV_STATE':
+        case actions.TOGGLE_NAV_STATE:
             return toggleNavState(state);
-        case 'COLLECTION_REQUEST':
+        case actions.COLLECTION_REQUEST:
             return setLoadingStatus(state, true);
-        case 'COLLECTION_SUCCESS':
+        case actions.COLLECTION_SUCCESS:
             return setCollection(
                 setLoadingStatus(state, false),
                 action.releases
             );
-        case 'OPEN_RELEASE':
+        case actions.COLLECTION_FAILURE:
+            return setError(
+                setLoadingStatus(state, false),
+                action.error
+            );
+        case actions.OPEN_RELEASE:
             return openRelease(state, action.releaseId);
-        case 'CLOSE_RELEASE':
+        case actions.CLOSE_RELEASE:
             return closeRelease(state);
+        case actions.CLOSE_ERROR:
+            return closeError(state);
         default:
             return state;
     }
