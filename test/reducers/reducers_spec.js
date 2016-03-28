@@ -69,12 +69,13 @@ describe('reducers', () => {
         expect(nextState).to.equal(Map());
     });
 
-    it('COLLECTION_REQUEST sets the loading property to true', () => {
+    it('COLLECTION_REQUEST sets the collection loaded and the loader', () => {
         const action = { type: 'COLLECTION_REQUEST' };
         const nextState = reducer(undefined, action);
 
         expect(nextState).to.equal(Map({
-            loading: true
+            loading: true,
+            collectionLoaded: true
         }));
     });
 

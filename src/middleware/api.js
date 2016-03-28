@@ -5,9 +5,13 @@ import { ROOT } from '../constants/api';
 const createActionFromAPIResponse = (type, response) => {
     let action = { type };
 
-    Object.keys(response.data).forEach(f => {
-        action[f] = response.data[f];
-    });
+    if (response.status !== 200) {
+        action.error = response.data;
+    } else {
+        Object.keys(response.data).forEach(f => {
+            action[f] = response.data[f];
+        });
+    }
 
     return action;
 };

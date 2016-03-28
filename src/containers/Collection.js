@@ -8,7 +8,8 @@ import * as actions from '../actions';
 
 const mapStateToProps = state => {
     return {
-        collection: getCollection(state)
+        collection: getCollection(state),
+        collectionLoaded: state.get('collectionLoaded')
     };
 };
 

@@ -77,6 +77,25 @@ export default () => {
         expect(called).to.be.true;
     });
 
+    it('does not invokes callback if collection already loaded', () => {
+        const store = createStore(() => {});
+
+        let called = false;
+        const callback = () => { called = true; };
+
+        renderIntoDocument(
+            <Provider store={store}>
+                <Collection
+                    collectionLoaded
+                    loadCollection={callback}
+                    openRelease={callback}
+                />
+            </Provider>
+        );
+
+        expect(called).to.be.false;
+    });
+
     it('invokes callback on row click', () => {
         const store = createStore(() => {});
 

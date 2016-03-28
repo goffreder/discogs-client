@@ -1,12 +1,13 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ErrorDialog from '../components/ReleaseDialog';
+import ErrorDialog from '../components/ErrorDialog';
 
 import * as actions from '../actions';
 
 const mapStateToProps = state => {
     return {
-        open: Boolean(state.get('currentRelease'))
+        open: Boolean(state.get('error')),
+        message: state.getIn(['error', 'message'], '')
     };
 };
 

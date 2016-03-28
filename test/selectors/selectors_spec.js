@@ -4,6 +4,15 @@ import { expect } from 'chai';
 import * as selectors from '../../src/selectors';
 
 describe('selectors', () => {
+    it('should return an error with message on API failure', () => {
+        const mockState = {
+            error: { message: 'Error' }
+        };
+        const error = selectors.getError(fromJS(mockState));
+
+        expect(error).to.deep.equal({ message: 'Error' });
+    });
+
     it('should return collection items from API response', () => {
         const mockState = {
             collection: [{

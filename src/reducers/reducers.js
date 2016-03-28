@@ -10,6 +10,10 @@ function setLoadingStatus(state, loading) {
     return state.set('loading', loading);
 }
 
+function setCollectionLoaded(state) {
+    return state.set('collectionLoaded', true);
+}
+
 function setCollection(state, releases) {
     return state.set('collection', fromJS(releases));
 }
@@ -35,7 +39,7 @@ export default (state = Map(), action) => {
         case actions.TOGGLE_NAV_STATE:
             return toggleNavState(state);
         case actions.COLLECTION_REQUEST:
-            return setLoadingStatus(state, true);
+            return setCollectionLoaded(setLoadingStatus(state, true));
         case actions.COLLECTION_SUCCESS:
             return setCollection(
                 setLoadingStatus(state, false),

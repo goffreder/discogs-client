@@ -13,6 +13,7 @@ export default class ErrorDialog extends React.Component {
     }
 
     static propTypes = {
+        message: React.PropTypes.string,
         open: React.PropTypes.bool.isRequired,
         closeError: React.PropTypes.func.isRequired
     }
@@ -35,8 +36,15 @@ export default class ErrorDialog extends React.Component {
                 modal={false}
                 open={this.props.open}
                 onRequestClose={this.props.closeError}
+                overlayStyle={{
+                    backgroundColor: 'rgba(222, 88, 88, 0.541176)'
+                }}
             >
                 {'Oops! Somewhere, something went wrong!'}
+                <div style={{ marginTop: 20 }}>
+                    <b>{'Error message: '}</b>
+                    {this.props.message}
+                </div>
             </Dialog>
         );
     }

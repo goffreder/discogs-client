@@ -2,11 +2,11 @@ import { List } from 'immutable';
 
 import { createSelector } from 'reselect';
 
-const getRawCollection = state => state.get('collection', List()).toJS();
+const getRawCollection = state => state.get('collection', List());
 
 export const getCollection = createSelector(
     getRawCollection,
-    collection => collection.map(r => {
+    collection => collection.toJS().map(r => {
         return {
             id: r.id,
             title: r.basic_information.title,
@@ -14,4 +14,11 @@ export const getCollection = createSelector(
             year: r.basic_information.year
         };
     })
+);
+
+const getRawError = state => state.get('error');
+
+export const getError = createSelector(
+    getRawError,
+    error => error ? error.toJS() : error
 );

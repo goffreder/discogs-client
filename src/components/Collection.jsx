@@ -22,16 +22,18 @@ export default class Collection extends React.Component {
             year: React.PropTypes.number.isRequired,
             thumb: React.PropTypes.string
         })),
+        collectionLoaded: React.PropTypes.bool,
         loadCollection: React.PropTypes.func.isRequired,
         openRelease: React.PropTypes.func.isRequired
     }
 
     static defaultProps = {
-        collection: []
+        collection: [],
+        collectionLoaded: false
     }
 
     componentDidMount() {
-        if (!this.props.collection.length) {
+        if (!this.props.collectionLoaded) {
             this.props.loadCollection();
         }
     }

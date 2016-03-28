@@ -89,6 +89,6 @@ h1.empty-collection {
     margin-top: 50px;
 }
 
-
-/* FF5252
- rgba(222, 88, 88, 0.541176)*/
+div.error h3 {
+    color: #FF5252 !important;
+}

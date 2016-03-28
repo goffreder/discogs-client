@@ -71,11 +71,14 @@ describe('async actions', () => {
 
             nock(ROOT)
                 .get(COLLECTION_ENDPOINT)
-                .reply(400);
+                .reply(400, { message: 'Error' });
 
             const expectedActions = [
                 { type: types.COLLECTION_REQUEST },
-                { type: types.COLLECTION_FAILURE }
+                {
+                    type: types.COLLECTION_FAILURE,
+                    error: { message: 'Error' }
+                }
             ];
             const store = mockStore(undefined);
 
