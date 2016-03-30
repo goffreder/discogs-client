@@ -5,6 +5,8 @@ import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 
+import ReleaseCard from '../containers/ReleaseCard';
+
 export default class ReleaseDialog extends React.Component {
     constructor(props) {
         super(props);
@@ -15,19 +17,30 @@ export default class ReleaseDialog extends React.Component {
     static propTypes = {
         open: React.PropTypes.bool.isRequired,
         releaseId: React.PropTypes.number,
+        releaseData: React.PropTypes.shape({
+            artist: React.PropTypes.string,
+            title: React.PropTypes.string,
+            year: React.PropTypes.number,
+            tracklist: React.PropTypes.arrayOf(React.PropTypes.shape({
+                position: React.PropTypes.string,
+                duration: React.PropTypes.string,
+                title: React.PropTypes.string
+            }))
+        }),
         closeRelease: React.PropTypes.func.isRequired
     }
 
     render() {
         const actions = [
-            <FlatButton
+            /* <FlatButton
                 key={1}
                 label="Go to release"
                 primary
                 onTouchTap={this.props.closeRelease}
-            />, <FlatButton
+            />, */
+            <FlatButton
                 key={0}
-                label="Cancel"
+                label="Close"
                 secondary
                 onTouchTap={this.props.closeRelease}
             />
@@ -41,6 +54,7 @@ export default class ReleaseDialog extends React.Component {
                 onRequestClose={this.props.closeRelease}
             >
                 {'Watching '}{this.props.releaseId}{' details.'}
+                <ReleaseCard />
             </Dialog>
         );
     }

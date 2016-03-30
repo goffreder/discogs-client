@@ -1,1 +1,1 @@
-export const DEFAULT_THUMB = require('../images/default-release.png');
+export const DEFAULT_THUMB = '../images/default-release.png';
