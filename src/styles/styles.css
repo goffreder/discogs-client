@@ -92,3 +92,16 @@ h1.empty-collection {
 div.error h3 {
     color: #FF5252 !important;
 }
+
+table.tracklist tr, table.tracklist td {
+    height: 25px !important;
+}
+
+table.tracklist td {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+table.tracklist td.single {
+    width: 30px;
+}
