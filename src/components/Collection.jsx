@@ -5,7 +5,7 @@ import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 import Griddle from 'griddle-react';
 import Divider from 'material-ui/lib/divider';
 
-import CollectionHeader from '../containers/CollectionHeader';
+import CollectionHeader from '../components/CollectionHeader';
 
 export default class Collection extends React.Component {
     constructor(props) {
@@ -56,7 +56,7 @@ export default class Collection extends React.Component {
 
         return (
             <div className="collection">
-                <CollectionHeader />
+                <CollectionHeader loadCollection={this.props.loadCollection} />
                 <Divider />
                 {content}
             </div>

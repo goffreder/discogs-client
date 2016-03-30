@@ -9,19 +9,23 @@ export default () => {
     const renderer = createRenderer();
 
     it('renders correctly with no props and no children', () => {
-        renderer.render(<App><div /></App>);
+        const cb = () => {};
+        const app = <App toggleNav={cb} closeError={cb}><div /></App>;
+
+        renderer.render(app);
 
         const component = renderer.getRenderOutput();
 
         expect(component.type).to.equal('div');
-        expect(component.props.children[0].type.displayName)
-            .to.equal('Connect(AppBar)');
-        expect(component.props.children[1].type.displayName)
-            .to.equal('Connect(LeftNav)');
+        expect(component.props.children[0].type.name).to.equal('AppBar');
+        expect(component.props.children[1].type.name).to.equal('LeftNav');
     });
 
     it('renders children correctly', () => {
-        renderer.render(<App><div /></App>);
+        const cb = () => {};
+        const app = <App toggleNav={cb} closeError={cb}><div /></App>;
+
+        renderer.render(app);
 
         const component = renderer.getRenderOutput();
 
@@ -29,16 +33,23 @@ export default () => {
     });
 
     it('renders the loader if relative prop is passed', () => {
-        renderer.render(<App loading><div /></App>);
+        const cb = () => {};
+        const app = <App toggleNav={cb} closeError={cb} loading><div /></App>;
+
+        renderer.render(app);
 
         const component = renderer.getRenderOutput();
 
-        expect(component.props.children[3].type.displayName)
-            .to.equal('Connect(Loader)');
+        expect(component.props.children[3].type.name).to.equal('Loader');
     });
 
     it('renders the release dialog if a current release is set', () => {
-        renderer.render(<App currentRelease={1}><div /></App>);
+        const cb = () => {};
+        const app = (<App toggleNav={cb} closeError={cb} currentRelease={1}>
+            <div />
+        </App>);
+
+        renderer.render(app);
 
         const component = renderer.getRenderOutput();
 

@@ -11,7 +11,7 @@ export default () => {
     it('renders correctly', () => {
         const callback = () => {};
 
-        renderer.render(<ErrorDialog closeError={callback} />);
+        renderer.render(<ErrorDialog open closeError={callback} />);
 
         const component = renderer.getRenderOutput();
 
@@ -22,7 +22,7 @@ export default () => {
         const callback = () => {};
 
         renderer.render(
-            <ErrorDialog message="ERROR_MESSAGE" closeError={callback} />
+            <ErrorDialog open message="ERROR_MESSAGE" closeError={callback} />
         );
 
         const component = renderer.getRenderOutput();
@@ -35,7 +35,7 @@ export default () => {
         let called = false;
         const callback = () => { called = true; };
 
-        renderer.render(<ErrorDialog closeError={callback} />);
+        renderer.render(<ErrorDialog open closeError={callback} />);
 
         const component = renderer.getRenderOutput();
         const button = component.props.actions[0];
@@ -49,7 +49,7 @@ export default () => {
         let called = false;
         const callback = () => { called = true; };
 
-        renderer.render(<ErrorDialog closeError={callback} />);
+        renderer.render(<ErrorDialog open closeError={callback} />);
 
         const component = renderer.getRenderOutput();
 

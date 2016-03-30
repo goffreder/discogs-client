@@ -15,7 +15,7 @@ export default class MenuItem extends React.Component {
         icon: React.PropTypes.element,
         children: React.PropTypes.node.isRequired,
         linkTo: React.PropTypes.string,
-        toggleNav: React.PropTypes.func
+        toggleNav: React.PropTypes.func.isRequired
     }
 
     render() {

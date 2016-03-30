@@ -2,11 +2,11 @@ import React from 'react';
 
 import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 
-import AppBar from '../containers/AppBar';
-import LeftNav from '../containers/LeftNav';
-import Loader from '../containers/Loader';
+import AppBar from '../components/AppBar';
+import LeftNav from '../components/LeftNav';
+import Loader from '../components/Loader';
 import ReleaseDialog from '../containers/ReleaseDialog';
-import ErrorDialog from '../containers/ErrorDialog';
+import ErrorDialog from '../components/ErrorDialog';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -18,7 +18,13 @@ export default class App extends React.Component {
     static propTypes = {
         children: React.PropTypes.node.isRequired,
         currentRelease: React.PropTypes.number,
-        loading: React.PropTypes.bool
+        loading: React.PropTypes.bool,
+        error: React.PropTypes.shape({
+            message: React.PropTypes.string
+        }),
+        leftNavOpen: React.PropTypes.bool,
+        toggleNav: React.PropTypes.func.isRequired,
+        closeError: React.PropTypes.func.isRequired
     }
 
     render() {
@@ -33,12 +39,19 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <AppBar />
-                <LeftNav />
+                <AppBar toggleNav={this.props.toggleNav} />
+                <LeftNav
+                    open={this.props.leftNavOpen}
+                    toggleNav={this.props.toggleNav}
+                />
                 {content}
                 {loader}
                 <ReleaseDialog />
-                <ErrorDialog />
+                <ErrorDialog
+                    open={Boolean(this.props.error)}
+                    message={this.props.error ? this.props.error.message : ''}
+                    closeError={this.props.closeError}
+                />
             </div>
         );
     }

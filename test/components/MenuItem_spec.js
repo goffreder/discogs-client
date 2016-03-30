@@ -9,7 +9,8 @@ export default () => {
     const renderer = createRenderer();
 
     it('renders correctly with no props', () => {
-        renderer.render(<MenuItem>{'Test item'}</MenuItem>);
+        const cb = () => {};
+        renderer.render(<MenuItem toggleNav={cb}>{'Test item'}</MenuItem>);
 
         const component = renderer.getRenderOutput();
 
@@ -18,7 +19,10 @@ export default () => {
     });
 
     it('renders correctly with an icon', () => {
-        renderer.render(<MenuItem icon={<div />}>{'Test item'}</MenuItem>);
+        const cb = () => {};
+        renderer.render(
+            <MenuItem toggleNav={cb} icon={<div />}>{'Test item'}</MenuItem>
+        );
 
         const component = renderer.getRenderOutput();
 
@@ -26,7 +30,10 @@ export default () => {
     });
 
     it('renders correctly with a linkTo property', () => {
-        renderer.render(<MenuItem linkTo="test">{'Test item'}</MenuItem>);
+        const cb = () => {};
+        renderer.render(
+            <MenuItem toggleNav={cb} linkTo="test">{'Test item'}</MenuItem>
+        );
 
         const component = renderer.getRenderOutput();
         const innerItem = component.props.children;

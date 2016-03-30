@@ -9,7 +9,8 @@ export default () => {
     const renderer = createRenderer();
 
     it('renders correctly with no props', () => {
-        renderer.render(<LeftNav />);
+        const cb = () => {};
+        renderer.render(<LeftNav toggleNav={cb} />);
 
         const component = renderer.getRenderOutput();
 
@@ -24,7 +25,8 @@ export default () => {
     });
 
     it('renders an open LeftNav when open prop is passed as true', () => {
-        renderer.render(<LeftNav open />);
+        const cb = () => {};
+        renderer.render(<LeftNav toggleNav={cb} open />);
 
         const component = renderer.getRenderOutput();
 

@@ -19,7 +19,7 @@ export default class ErrorDialog extends React.Component {
     }
 
     static defaultProps = {
-        open: true
+        message: ''
     }
 
     render() {

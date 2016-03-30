@@ -7,7 +7,7 @@ import ActionHome from 'material-ui/lib/svg-icons/action/home';
 import FileFolder from 'material-ui/lib/svg-icons/file/folder';
 import ImageRemoveRedEye from 'material-ui/lib/svg-icons/image/remove-red-eye';
 
-import MenuItem from '../containers/MenuItem';
+import MenuItem from '../components/MenuItem';
 
 export default class LeftNav extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ export default class LeftNav extends React.Component {
 
     static propTypes = {
         open: React.PropTypes.bool,
-        toggleNav: React.PropTypes.func
+        toggleNav: React.PropTypes.func.isRequired
     }
 
     render() {
@@ -29,15 +29,24 @@ export default class LeftNav extends React.Component {
                 width={200}
                 onRequestChange={this.props.toggleNav}
             >
-                <MenuItem linkTo="/" icon={<ActionHome />}>
+                <MenuItem
+                    icon={<ActionHome />}
+                    linkTo="/"
+                    toggleNav={this.props.toggleNav}
+                >
                     {'Home'}
                 </MenuItem>
-                <MenuItem linkTo="/collection" icon={<FileFolder />}>
+                <MenuItem
+                    icon={<FileFolder />}
+                    linkTo="/collection"
+                    toggleNav={this.props.toggleNav}
+                >
                     {'Collection'}
                 </MenuItem>
                 <MenuItem
                     icon={<ImageRemoveRedEye />}
                     linkTo="/wantlist"
+                    toggleNav={this.props.toggleNav}
                 >
                     {'Wantlist'}
                 </MenuItem>

@@ -3,9 +3,9 @@ import React from 'react';
 import { Route } from 'react-router';
 
 import App from './containers/App';
-import Main from './containers/Main';
+import Main from './components/Main';
 import Collection from './containers/Collection';
-import Wantlist from './containers/Wantlist';
+import Wantlist from './components/Wantlist';
 
 export default (
     <Route component={App}>

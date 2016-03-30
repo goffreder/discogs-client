@@ -30,12 +30,11 @@ export default () => {
         expect(component.type).to.equal('div');
         expect(component.props.className).to.equal('collection');
         expect(component.props.children.length).to.equal(3);
-        expect(component.props.children[0].type.displayName)
-            .to.equal('Connect(CollectionHeader)');
+        expect(component.props.children[0].type.name)
+            .to.equal('CollectionHeader');
         expect(component.props.children[1].type.displayName)
             .to.equal('Divider');
-        expect(component.props.children[2].type)
-            .to.equal('h1');
+        expect(component.props.children[2].type).to.equal('h1');
         expect(component.props.children[2].props.children)
             .to.equal('No items to display');
     });
