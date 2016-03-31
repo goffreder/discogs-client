@@ -5,7 +5,7 @@ import { shouldComponentUpdate } from 'react-addons-pure-render-mixin';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 
-import ReleaseCard from '../containers/ReleaseCard';
+import ReleaseCard from './ReleaseCard';
 
 export default class ReleaseDialog extends React.Component {
     constructor(props) {

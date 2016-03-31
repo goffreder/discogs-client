@@ -6,8 +6,8 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import CardText from 'material-ui/lib/card/card-text';
 import Table from 'material-ui/lib/table/table';
 import TableBody from 'material-ui/lib/table/table-body';
-import TableRow from 'material-ui/lib/table/table-row';
-import TableRowColumn from 'material-ui/lib/table/table-row-column';
+
+import ReleaseTracklistItem from './ReleaseTracklistItem';
 
 export default class ReleaseTracklist extends React.Component {
     constructor(props) {
@@ -20,7 +20,7 @@ export default class ReleaseTracklist extends React.Component {
         tracklist: React.PropTypes.arrayOf(React.PropTypes.shape({
             position: React.PropTypes.string,
             duration: React.PropTypes.string,
-            title: React.PropTypes.string
+            title: React.PropTypes.string.isRequired
         })).isRequired
     }
 
@@ -39,15 +39,12 @@ export default class ReleaseTracklist extends React.Component {
                     <Table className="tracklist" selectable={false}>
                         <TableBody displayRowCheckbox={false}>
                             {this.props.tracklist.map((t, k) =>
-                                <TableRow key={k} displayBorder={false} >
-                                    <TableRowColumn className="single">
-                                        {t.position}
-                                    </TableRowColumn>
-                                    <TableRowColumn>{t.title}</TableRowColumn>
-                                    <TableRowColumn className="single">
-                                        {t.duration}
-                                    </TableRowColumn>
-                                </TableRow>
+                                <ReleaseTracklistItem
+                                    key={k}
+                                    position={t.position}
+                                    title={t.title}
+                                    duration={t.duration}
+                                />
                             )}
                         </TableBody>
                     </Table>

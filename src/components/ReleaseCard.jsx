@@ -6,7 +6,7 @@ import Card from 'material-ui/lib/card/card';
 import CardTitle from 'material-ui/lib/card/card-title';
 import CardMedia from 'material-ui/lib/card/card-media';
 
-import ReleaseTracklist from '../containers/ReleaseTracklist';
+import ReleaseTracklist from '../components/ReleaseTracklist';
 
 import { DEFAULT_THUMB } from '../constants/constants';
 
